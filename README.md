@@ -1,4 +1,4 @@
-# Laiba Khan — Local SEO & Google Business Profile Portfolio
+# Laiba Khan Local SEO & Google Business Profile Portfolio
 
 🔗 **Live site:** https://laiba-khan3.github.io/portfolio-building/
 
@@ -6,7 +6,7 @@ Local SEO & Google Business Profile specialist helping businesses rank higher in
 
 ## What's in this repo
 
-- `index.html` — the full portfolio site (single file, no build step needed), deployed via GitHub Pages.
+- `index.html`  the full portfolio site (single file, no build step needed), deployed via GitHub Pages.
 
 ## Services
 
