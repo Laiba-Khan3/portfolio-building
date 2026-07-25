@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Business Profile Audit Checklist | Laiba Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152018;
+    --paper:#EEF1EC;
+    --paper-2:#E3E8DF;
+    --pin:#E8543A;
+    --pin-dark:#C13F28;
+    --gold:#C99A3E;
+    --sage:#5C7A63;
+    --line: rgba(21,32,24,0.14);
+    --white:#FBFAF7;
+    --green:#3E8E5A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  h1,h2{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+  .wrap{max-width:820px; margin:0 auto; padding:48px 24px 80px;}
+
+  .top{margin-bottom:8px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--sage); display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:"📍"; font-size:13px;}
+  h1{font-size:clamp(26px,4vw,36px); margin:14px 0 10px;}
+  .lede{color:#3c463e; max-width:56ch; font-size:15.5px; margin-bottom:28px;}
+
+  /* progress */
+  .progress-card{
+    background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:20px 24px; margin-bottom:32px;
+    display:flex; align-items:center; gap:20px;
+  }
+  .ring{position:relative; width:64px; height:64px; flex-shrink:0;}
+  .ring svg{transform:rotate(-90deg);}
+  .ring circle{fill:none; stroke-width:6;}
+  .ring .bg{stroke:var(--paper-2);}
+  .ring .fg{stroke:var(--pin); stroke-linecap:round; transition:stroke-dashoffset .3s ease;}
+  .ring-label{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono'; font-weight:600; font-size:13px;
+  }
+  .progress-text h2{font-size:17px; margin-bottom:4px;}
+  .progress-text p{font-size:13.5px; color:#5c665e;}
+  .actions{margin-left:auto; display:flex; gap:10px;}
+  .btn{
+    border:1.5px solid var(--line); background:var(--white); color:var(--ink);
+    padding:9px 16px; border-radius:100px; font-weight:600; font-size:13.5px;
+    cursor:pointer; transition:background .15s;
+  }
+  .btn:hover{background:var(--paper-2);}
+  .btn.primary{background:var(--ink); color:var(--white); border-color:var(--ink);}
+  .btn.primary:hover{background:#243328;}
+  @media (max-width:560px){ .progress-card{flex-wrap:wrap;} .actions{margin-left:0; width:100%;} }
+
+  /* category */
+  .category{margin-bottom:28px;}
+  .cat-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
+  .cat-head h2{font-size:18px;}
+  .cat-count{font-family:'JetBrains Mono'; font-size:12px; color:var(--sage);}
+  .items{background:var(--white); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .item{
+    display:flex; align-items:flex-start; gap:12px;
+    padding:14px 18px; border-top:1px solid var(--line); cursor:pointer;
+  }
+  .item:first-child{border-top:none;}
+  .item:hover{background:var(--paper);}
+  .check{
+    width:20px; height:20px; border-radius:6px; border:1.5px solid var(--line);
+    flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center;
+    transition:all .15s; background:var(--white);
+  }
+  .item.done .check{background:var(--green); border-color:var(--green);}
+  .check svg{width:12px; height:12px; opacity:0; transition:opacity .1s;}
+  .item.done .check svg{opacity:1;}
+  .item-text .label{font-size:14.5px; font-weight:500;}
+  .item.done .item-text .label{color:#7a8378; text-decoration:line-through;}
+  .item-text .note{font-size:13px; color:#5c665e; margin-top:3px;}
+
+  footer{text-align:center; font-size:13px; color:#7a8378; margin-top:40px;}
+  footer a{color:var(--pin-dark); text-decoration:none; font-weight:600;}
+
+  @media print{
+    .actions, footer{display:none;}
+    body{background:white;}
+    .item{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="eyebrow">Local SEO Toolkit</div>
+    <h1>Google Business Profile Audit Checklist</h1>
+    <p class="lede">A step-by-step checklist I use to audit every new client's Google Business Profile before starting optimization work. Check off each item as you go, then print or save as a PDF when you're done.</p>
+  </div>
+
+  <div class="progress-card">
+    <div class="ring">
+      <svg width="64" height="64" viewBox="0 0 64 64">
+        <circle class="bg" cx="32" cy="32" r="27"></circle>
+        <circle class="fg" id="ringFg" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"></circle>
+      </svg>
+      <div class="ring-label" id="ringLabel">0%</div>
+    </div>
+    <div class="progress-text">
+      <h2 id="progressHeading">Let's get started</h2>
+      <p id="progressSub"><span id="doneCount">0</span> of <span id="totalCount">0</span> checks complete</p>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="resetChecklist()">Reset</button>
+      <button class="btn primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <div id="categories"></div>
+
+  <footer>
+    Built by <a href="https://laiba-khan3.github.io/portfolio-building/" target="_blank" rel="noopener">Laiba Khan</a> | Local SEO & Google Business Profile Specialist
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  {
+    name: "Profile Basics",
+    items: [
+      {label:"Business name matches signage exactly (no keyword stuffing)"},
+      {label:"Primary category is the most accurate match", note:"Not the broadest, the most specific correct one"},
+      {label:"Secondary categories added where relevant"},
+      {label:"Correct address & service area configured"},
+      {label:"Phone number matches website and citations exactly"},
+      {label:"Website URL set and working"},
+      {label:"Business hours accurate, including holiday hours"},
+    ]
+  },
+  {
+    name: "Trust Signals",
+    items: [
+      {label:"Business is verified (not pending)"},
+      {label:"Logo and cover photo uploaded, high quality"},
+      {label:"At least 10 real photos across interior, exterior, team, work"},
+      {label:"Products/services section filled out with descriptions"},
+      {label:"Attributes selected accurately (e.g. wheelchair accessible, women-led)"},
+    ]
+  },
+  {
+    name: "Reviews",
+    items: [
+      {label:"Review count and rating checked against competitors"},
+      {label:"Owner responses present on recent reviews", note:"Both positive and negative"},
+      {label:"No unaddressed 1–2 star reviews from the last 90 days"},
+      {label:"Review generation system in place (QR code, link, or SMS ask)"},
+    ]
+  },
+  {
+    name: "Citations & Consistency",
+    items: [
+      {label:"NAP (Name, Address, Phone) checked across top 10 directories"},
+      {label:"Duplicate listings identified and merged/removed"},
+      {label:"Data aggregators updated (where applicable)"},
+    ]
+  },
+  {
+    name: "Content & Engagement",
+    items: [
+      {label:"Google Posts published in the last 30 days"},
+      {label:"Q&A section reviewed and seeded with common questions"},
+      {label:"Messaging enabled and responded to promptly"},
+    ]
+  },
+  {
+    name: "Technical & Local SEO",
+    items: [
+      {label:"LocalBusiness schema markup present on website"},
+      {label:"NAP on website footer matches GBP exactly"},
+      {label:"City/service location pages exist for multi-area businesses"},
+      {label:"Site loads fast and is mobile-friendly"},
+    ]
+  },
+  {
+    name: "AI & Emerging Search",
+    items: [
+      {label:"Business appears when asking ChatGPT for local recommendations in its category"},
+      {label:"Business appears in Google AI Overviews for relevant local queries"},
+      {label:"Consistent, structured business info available for AI/LLM sources to pull from"},
+    ]
+  },
+];
+
+const STORAGE_KEY = "gbp_audit_state_v1";
+let state = {};
+
+function render(){
+  const container = document.getElementById('categories');
+  container.innerHTML = '';
+  let total = 0, done = 0;
+
+  DATA.forEach((cat, ci) => {
+    total += cat.items.length;
+    const catDoneCount = cat.items.filter((_, ii) => state[ci+'-'+ii]).length;
+    done += catDoneCount;
+
+    const catEl = document.createElement('div');
+    catEl.className = 'category';
+    catEl.innerHTML = `
+      <div class="cat-head">
+        <h2>${cat.name}</h2>
+        <div class="cat-count">${catDoneCount}/${cat.items.length}</div>
+      </div>
+      <div class="items">
+        ${cat.items.map((item, ii) => {
+          const key = ci+'-'+ii;
+          const isDone = !!state[key];
+          return `
+            <div class="item ${isDone ? 'done' : ''}" data-key="${key}">
+              <div class="check">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="item-text">
+                <div class="label">${item.label}</div>
+                ${item.note ? `<div class="note">${item.note}</div>` : ''}
+              </div>
+            </div>`;
+        }).join('')}
+      </div>
+    `;
+    container.appendChild(catEl);
+  });
+
+  container.querySelectorAll('.item').forEach(el => {
+    el.addEventListener('click', () => {
+      const key = el.getAttribute('data-key');
+      state[key] = !state[key];
+      saveState();
+      render();
+    });
+  });
+
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('doneCount').textContent = done;
+
+  const pct = total ? Math.round((done/total)*100) : 0;
+  const circumference = 169.6;
+  document.getElementById('ringFg').style.strokeDashoffset = circumference - (circumference * pct / 100);
+  document.getElementById('ringLabel').textContent = pct + '%';
+
+  const heading = document.getElementById('progressHeading');
+  if(pct === 0) heading.textContent = "Let's get started";
+  else if(pct < 50) heading.textContent = "Making progress";
+  else if(pct < 100) heading.textContent = "Almost there";
+  else heading.textContent = "Audit complete 🎉";
+}
+
+function saveState(){
+  // In-memory only — state resets on page reload, which is fine for a
+  // single audit session. Use "Print / Save PDF" to keep a permanent copy.
+}
+function resetChecklist(){
+  if(confirm('Reset all checked items?')){
+    state = {};
+    render();
+  }
+}
+
+render();
+</script>
+</body>
+</html>
